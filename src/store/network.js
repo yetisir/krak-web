@@ -1,7 +1,7 @@
 import vtkWSLinkClient from 'vtk.js/Sources/IO/Core/WSLinkClient';
 import SmartConnect from 'wslink/src/SmartConnect';
 
-import codeProtocol from '@/io/protocol';
+import createApi from '@/io/protocol';
 
 // Bind vtkWSLinkClient to our SmartConnect
 vtkWSLinkClient.setSmartConnectClass(SmartConnect);
@@ -29,7 +29,7 @@ export default {
     },
   },
   actions: {
-    NETWORK_CONNECT({ commit, state }) {
+    NETWORK_CONNECT({ commit, state, dispatch }) {
       const { config, client } = state;
       if (client && client.isConnected()) {
         client.disconnect();
@@ -38,7 +38,7 @@ export default {
       if (!clientToConnect) {
         clientToConnect = vtkWSLinkClient.newInstance();
         clientToConnect.setProtocols({
-          Code: codeProtocol,
+          Code: createApi({ state, dispatch }),
         });
       }
 

@@ -42,9 +42,11 @@ export default {
     this.$store.commit('VIEW_PROXY_SET', this.$refs.vtkViewComponent.view);
 
     // Initiate network connection
+    const host = process.env.RENDER_SERVER_HOST;
+    const port = process.env.RENDER_SERVER_PORT;
     const config = {
       application: 'code',
-      sessionURL: 'ws://krak.yetisir.me:1234/ws',
+      sessionURL: `ws://${host}:${port}/ws`,
     };
     this.$store.commit('NETWORK_CONFIG_SET', config);
     this.$store.dispatch('NETWORK_CONNECT');
