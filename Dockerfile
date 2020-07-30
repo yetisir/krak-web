@@ -9,4 +9,8 @@ RUN yarn install
 
 COPY . ./
 
-CMD npm run serve
+ARG NODE_ENV=${NODE_ENV}
+# RUN ./build.sh ${NODE_ENV}
+
+CMD [ "./run.sh", ${NODE_ENV} ]
+
