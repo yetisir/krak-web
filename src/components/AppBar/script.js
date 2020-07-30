@@ -6,6 +6,12 @@ export default {
   components: {
     NavigationDrawer,
   },
+  props: {
+    text: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       logo,

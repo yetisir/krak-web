@@ -19,6 +19,11 @@ export default {
     GitPipeline,
     ObjectGraph,
   },
+  data() {
+    return {
+      renderServer: '',
+    };
+  },
   computed: {
     client() {
       return this.$store.getters.NETWORK_CLIENT;
@@ -44,6 +49,7 @@ export default {
     // Initiate network connection
     const host = process.env.VUE_APP_SERVER_HOST;
     const port = process.env.VUE_APP_RENDER_SERVER_PORT;
+    this.renderServer = `ws://${host}:${port}/ws`; // Temporary
     const config = {
       application: 'code',
       sessionURL: `ws://${host}:${port}/ws`,
