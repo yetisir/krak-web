@@ -38,7 +38,7 @@ export default {
       if (!clientToConnect) {
         clientToConnect = vtkWSLinkClient.newInstance();
         clientToConnect.setProtocols({
-          Code: createApi({ state, dispatch }),
+          Code: createApi({ commit, dispatch }),
         });
       }
 

@@ -42,8 +42,8 @@ export default {
     this.$store.commit('VIEW_PROXY_SET', this.$refs.vtkViewComponent.view);
 
     // Initiate network connection
-    const host = process.env.RENDER_SERVER_HOST;
-    const port = process.env.RENDER_SERVER_PORT;
+    const host = process.env.VUE_APP_SERVER_HOST;
+    const port = process.env.VUE_APP_RENDER_SERVER_PORT;
     const config = {
       application: 'code',
       sessionURL: `ws://${host}:${port}/ws`,
