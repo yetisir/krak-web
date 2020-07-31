@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Checkout submodules
+        uses: textbook/git-checkout-submodule-action@master
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      - name: Build static site
+        uses: c-py/action-dotenv-to-setenv@v1
+        with:
+          env-file: .env
+        run: yarn install && yarn build
+      - name: Deploy static site to s3 bucket
+        run: aws s3 sync ./dist/ s3://krakyetisir.me/ --acl public-read

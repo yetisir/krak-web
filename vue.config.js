@@ -1,4 +1,6 @@
 const vtkChainWebpack = require('vtk.js/Utilities/config/chainWebpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { VuetifyLoaderPlugin } = require('vuetify-loader');
 // const MonacoEditorPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
@@ -13,11 +15,12 @@ module.exports = {
     disableHostCheck: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
-  // configureWebpack: {
-  //   devServer: {
-  //     headers: { 'Access-Control-Allow-Origin': '*' },
-  //   },
-  // },
+  configureWebpack: {
+    plugins: [new BundleAnalyzerPlugin()],
+    // devServer: {
+    //   headers: { 'Access-Control-Allow-Origin': '*' },
+    // },
+  },
 
   // devServer: {
   //   disableHostCheck: true,
