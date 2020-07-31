@@ -15,12 +15,12 @@ module.exports = {
     disableHostCheck: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
-  configureWebpack: {
-    plugins: [new BundleAnalyzerPlugin()],
-    // devServer: {
-    //   headers: { 'Access-Control-Allow-Origin': '*' },
-    // },
-  },
+  // configureWebpack: {
+  //   plugins: [new BundleAnalyzerPlugin()],
+  //   // devServer: {
+  //   //   headers: { 'Access-Control-Allow-Origin': '*' },
+  //   // },
+  // },
 
   // devServer: {
   //   disableHostCheck: true,
